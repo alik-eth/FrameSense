@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   SimpleGrid,
@@ -29,6 +29,7 @@ import {
 import { MdCampaign, MdPeople, MdAttachMoney, MdAccountBalance } from 'react-icons/md';
 import { FaWallet, FaEthereum, FaPlus } from 'react-icons/fa';
 import { EditIcon } from '@chakra-ui/icons';
+import { EditCampaignModal } from '../../../components/EditCampaignModal';
 
 // Main Dashboard Widgets
 export const MainStatsWidget = () => {
@@ -93,6 +94,13 @@ export const MainStatsWidget = () => {
 export const CampaignsWidget = () => {
   const bgColor = useColorModeValue('white', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedCampaign, setSelectedCampaign] = useState(null);
+
+  const handleEditClick = (campaign) => {
+    setSelectedCampaign(campaign);
+    setIsEditModalOpen(true);
+  };
 
   return (
     <Box
@@ -168,7 +176,14 @@ export const CampaignsWidget = () => {
                 colorScheme="blue"
                 aria-label="Edit campaign"
                 size="sm"
-                onClick={() => console.log('Edit Casino frame')}
+                onClick={() => handleEditClick({
+                  name: "Casino frame",
+                  adCreative: "Spin & Win! Get 10 USDC for joining our casino frame. Your luck starts here!",
+                  targetedAudience: ["Speculator", "Pragmatist"],
+                  balance: "5000",
+                  status: "active",
+                  clicks: "1234"
+                })}
               />
             </Td>
           </Tr>
@@ -283,6 +298,11 @@ export const CampaignsWidget = () => {
           </Tr>
         </Tbody>
       </Table>
+      <EditCampaignModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        campaign={selectedCampaign}
+      />
     </Box>
   );
 };

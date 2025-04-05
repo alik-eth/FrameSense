@@ -5,8 +5,9 @@ import {
   MdBarChart,
   MdPerson,
   MdHome,
-  MdLock,
-  MdOutlineShoppingCart,
+  MdOutlinePeople,
+  MdCampaign,
+  MdAttachMoney
 } from 'react-icons/md';
 
 // Admin Imports
@@ -21,19 +22,19 @@ import SignInCentered from 'views/auth/signIn';
 
 const routes = [
   {
-    name: 'Main Dashboard',
+    name: 'Dashboard',
     layout: '/admin',
     path: '/default',
     icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
     component: <MainDashboard />,
   },
   {
-    name: 'NFT Marketplace',
+    name: 'Campaigns',
     layout: '/admin',
-    path: '/nft-marketplace',
+    path: '/campaigns',
     icon: (
       <Icon
-        as={MdOutlineShoppingCart}
+        as={MdCampaign}
         width="20px"
         height="20px"
         color="inherit"
@@ -43,33 +44,26 @@ const routes = [
     secondary: true,
   },
   {
-    name: 'Data Tables',
+    name: 'Audience',
     layout: '/admin',
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    path: '/data-tables',
+    icon: <Icon as={MdOutlinePeople} width="20px" height="20px" color="inherit" />,
+    path: '/audience',
     component: <DataTables />,
   },
   {
-    name: 'Profile',
+    name: 'Finances',
+    layout: '/admin',
+    icon: <Icon as={MdAttachMoney} width="20px" height="20px" color="inherit" />,
+    path: '/finances',
+    component: <DataTables />,
+  },
+  {
+    name: 'Account Settings',
     layout: '/admin',
     path: '/profile',
     icon: <Icon as={MdPerson} width="20px" height="20px" color="inherit" />,
     component: <Profile />,
-  },
-  {
-    name: 'Sign In',
-    layout: '/auth',
-    path: '/sign-in',
-    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
-    component: <SignInCentered />,
-  },
-  {
-    name: 'RTL Admin',
-    layout: '/rtl',
-    path: '/rtl-default',
-    icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
-    component: <RTL />,
-  },
+  }
 ];
 
 export default routes;

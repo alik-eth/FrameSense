@@ -25,6 +25,12 @@ pnpm install
 pnpm build
 ```
 
+3. Run the game:
+```bash
+cd packages/examples/rock-paper-scissors
+pnpm start
+```
+
 ## Project Structure
 
 ```

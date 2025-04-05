@@ -2,6 +2,10 @@
 
 This is a monorepo containing multiple packages for the FrameSense project.
 
+# Authors
+Alik Vovkotrub
+Matvii Yermakov
+
 ## Getting Started
 
 ### Prerequisites

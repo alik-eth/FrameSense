@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, useColorModeValue, SimpleGrid, Grid } from '@chakra-ui/react';
+import { Box, Text, useColorModeValue, SimpleGrid, Grid, Stat, StatLabel, StatNumber, StatHelpText } from '@chakra-ui/react';
 import Chart from 'react-apexcharts';
 
 export const CampaignCharts = () => {
@@ -177,5 +177,66 @@ export const CampaignCharts = () => {
         </Grid>
       </Box>
     </SimpleGrid>
+  );
+};
+
+export const CampaignStats = () => {
+  const bgColor = useColorModeValue('white', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const textColor = useColorModeValue('gray.700', 'white');
+
+  return (
+    <SimpleGrid columns={{ base: 1, md: 3 }} spacing="20px" width="100%">
+      <Box
+        bg={bgColor}
+        p={6}
+        borderRadius="lg"
+        border="1px solid"
+        borderColor={borderColor}
+      >
+        <Stat>
+          <StatLabel fontSize="md" color={textColor}>Casino Frame</StatLabel>
+          <StatNumber fontSize="3xl" color={textColor}>412</StatNumber>
+          <StatHelpText>Avg. clicks/day</StatHelpText>
+        </Stat>
+      </Box>
+
+      <Box
+        bg={bgColor}
+        p={6}
+        borderRadius="lg"
+        border="1px solid"
+        borderColor={borderColor}
+      >
+        <Stat>
+          <StatLabel fontSize="md" color={textColor}>Dating Frame</StatLabel>
+          <StatNumber fontSize="3xl" color={textColor}>285</StatNumber>
+          <StatHelpText>Avg. clicks/day</StatHelpText>
+        </Stat>
+      </Box>
+
+      <Box
+        bg={bgColor}
+        p={6}
+        borderRadius="lg"
+        border="1px solid"
+        borderColor={borderColor}
+      >
+        <Stat>
+          <StatLabel fontSize="md" color={textColor}>Education Frame</StatLabel>
+          <StatNumber fontSize="3xl" color={textColor}>536</StatNumber>
+          <StatHelpText>Avg. clicks/day</StatHelpText>
+        </Stat>
+      </Box>
+    </SimpleGrid>
+  );
+};
+
+export const DashboardCampaignSection = () => {
+  return (
+    <Box width="100%">
+      <Text fontSize="xl" fontWeight="bold" mb={4}>Campaign Performance</Text>
+      <CampaignStats />
+    </Box>
   );
 };

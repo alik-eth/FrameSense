@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Icon } from '@chakra-ui/react';
 import {
-  MdBarChart,
   MdPerson,
   MdHome,
   MdOutlinePeople,
@@ -11,14 +10,13 @@ import {
 } from 'react-icons/md';
 
 // Admin Imports
-import MainDashboard from 'views/admin/default';
-import NFTMarketplace from 'views/admin/marketplace';
+import MainDashboard from 'views/admin/default/index';
+import Campaigns from 'views/admin/marketplace';
 import Profile from 'views/admin/profile';
-import DataTables from 'views/admin/dataTables';
-import RTL from 'views/admin/rtl';
+import Audience from 'views/admin/audience';
 
 // Auth Imports
-import SignInCentered from 'views/auth/signIn';
+import Finances from 'views/admin/finances';
 
 const routes = [
   {
@@ -40,22 +38,15 @@ const routes = [
         color="inherit"
       />
     ),
-    component: <NFTMarketplace />,
+    component: <Campaigns />,
     secondary: true,
-  },
-  {
-    name: 'Audience',
-    layout: '/admin',
-    icon: <Icon as={MdOutlinePeople} width="20px" height="20px" color="inherit" />,
-    path: '/audience',
-    component: <DataTables />,
   },
   {
     name: 'Finances',
     layout: '/admin',
     icon: <Icon as={MdAttachMoney} width="20px" height="20px" color="inherit" />,
     path: '/finances',
-    component: <DataTables />,
+    component: <Finances />,
   },
   {
     name: 'Account Settings',

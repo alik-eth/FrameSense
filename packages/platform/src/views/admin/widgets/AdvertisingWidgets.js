@@ -17,8 +17,16 @@ import {
   Td,
   Progress,
   Badge,
+  Flex,
+  Stack,
+  Button,
+  InputGroup,
+  Input,
+  InputRightAddon,
+  Icon,
 } from '@chakra-ui/react';
 import { MdCampaign, MdPeople, MdAttachMoney, MdAccountBalance } from 'react-icons/md';
+import { FaWallet, FaEthereum, FaPlus } from 'react-icons/fa';
 
 // Main Dashboard Widgets
 export const MainStatsWidget = () => {
@@ -26,7 +34,7 @@ export const MainStatsWidget = () => {
   const borderColor = useColorModeValue('gray.200', 'gray.600');
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 4 }} spacing={4} mb={4}>
+    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4} mb={4} width="100%">
       <Box
         bg={bgColor}
         p={4}
@@ -36,7 +44,7 @@ export const MainStatsWidget = () => {
       >
         <Stat>
           <StatLabel>Total Campaigns</StatLabel>
-          <StatNumber>24</StatNumber>
+          <StatNumber>3</StatNumber>
           <StatHelpText>
             <StatArrow type="increase" />
             23.36%
@@ -51,8 +59,8 @@ export const MainStatsWidget = () => {
         borderColor={borderColor}
       >
         <Stat>
-          <StatLabel>Active Users</StatLabel>
-          <StatNumber>1,234</StatNumber>
+          <StatLabel>Average clicks today</StatLabel>
+          <StatNumber>54</StatNumber>
           <StatHelpText>
             <StatArrow type="increase" />
             12.5%
@@ -67,27 +75,11 @@ export const MainStatsWidget = () => {
         borderColor={borderColor}
       >
         <Stat>
-          <StatLabel>Total Revenue</StatLabel>
+          <StatLabel>Total Balance</StatLabel>
           <StatNumber>12,345 USDC</StatNumber>
           <StatHelpText>
             <StatArrow type="increase" />
             8.2%
-          </StatHelpText>
-        </Stat>
-      </Box>
-      <Box
-        bg={bgColor}
-        p={4}
-        borderRadius="lg"
-        borderWidth="1px"
-        borderColor={borderColor}
-      >
-        <Stat>
-          <StatLabel>Average Balance</StatLabel>
-          <StatNumber>1,234 USDC</StatNumber>
-          <StatHelpText>
-            <StatArrow type="increase" />
-            5.1%
           </StatHelpText>
         </Stat>
       </Box>
@@ -115,6 +107,7 @@ export const CampaignsWidget = () => {
           <Tr>
             <Th>Campaign</Th>
             <Th>AD Creative Image</Th>
+            <Th>Targeted Audience</Th>
             <Th>Balance</Th>
             <Th>Status</Th>
             <Th>Progress</Th>
@@ -156,6 +149,12 @@ export const CampaignsWidget = () => {
                 </Box>
               </Box>
             </Td>
+            <Td>
+              <Stack>
+                <Badge colorScheme="purple">Speculator</Badge>
+                <Badge colorScheme="purple">Pragmatist</Badge>
+              </Stack>
+            </Td>
             <Td>5,000 USDC</Td>
             <Td><Badge colorScheme="green">Active</Badge></Td>
             <Td><Progress value={75} size="sm" colorScheme="green" /></Td>
@@ -194,6 +193,11 @@ export const CampaignsWidget = () => {
                   </Text>
                 </Box>
               </Box>
+            </Td>
+            <Td>
+              <Stack>
+                <Badge colorScheme="purple">Pragmatist</Badge>
+              </Stack>
             </Td>
             <Td>3,500 USDC</Td>
             <Td><Badge colorScheme="red">Waiting for approval</Badge></Td>
@@ -234,6 +238,12 @@ export const CampaignsWidget = () => {
                 </Box>
               </Box>
             </Td>
+            <Td>
+              <Stack>
+                <Badge colorScheme="purple">Builder</Badge>
+                <Badge colorScheme="purple">Decentralist</Badge>
+              </Stack>
+            </Td>
             <Td>2,800 USDC</Td>
             <Td><Badge colorScheme="green">Active</Badge></Td>
             <Td><Progress value={90} size="sm" colorScheme="green" /></Td>
@@ -244,10 +254,12 @@ export const CampaignsWidget = () => {
   );
 };
 
-// Audience Widget
-export const AudienceWidget = () => {
+// Renamed from AudienceWidget to TransactionsWidget for clarity
+export const TransactionsWidget = () => {
   const bgColor = useColorModeValue('white', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
+  const textColorSecondary = "gray.400";
 
   return (
     <Box
@@ -257,37 +269,97 @@ export const AudienceWidget = () => {
       borderWidth="1px"
       borderColor={borderColor}
     >
-      <Text fontSize="xl" fontWeight="bold" mb={4}>Top Users by Balance</Text>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th>User</Th>
-            <Th>Balance</Th>
-            <Th>Campaigns</Th>
-            <Th>Status</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <Tr>
-            <Td>John Doe</Td>
-            <Td>12,345 USDC</Td>
-            <Td>5</Td>
-            <Td><Badge colorScheme="green">Active</Badge></Td>
-          </Tr>
-          <Tr>
-            <Td>Jane Smith</Td>
-            <Td>8,765 USDC</Td>
-            <Td>3</Td>
-            <Td><Badge colorScheme="green">Active</Badge></Td>
-          </Tr>
-          <Tr>
-            <Td>Mike Johnson</Td>
-            <Td>6,543 USDC</Td>
-            <Td>4</Td>
-            <Td><Badge colorScheme="yellow">Pending</Badge></Td>
-          </Tr>
-        </Tbody>
-      </Table>
+      {/* Balance Section */}
+      <Flex justify="space-between" align="center" mb={6}>
+        <Box>
+          <Text fontSize="md" color={textColorSecondary}>Current Balance</Text>
+          <Text fontSize="3xl" fontWeight="bold" color={textColorPrimary}>
+            12,345 USDC
+          </Text>
+        </Box>
+        <Stack direction="row" spacing={2}>
+          <Button
+            leftIcon={<Icon as={FaWallet} />}
+            colorScheme="purple"
+            variant="solid"
+            size="md"
+          >
+            Connect Farcaster Wallet
+          </Button>
+        </Stack>
+      </Flex>
+
+      {/* Top Up Section */}
+      <Box mb={6} p={4} borderWidth="1px" borderRadius="md" borderColor={borderColor}>
+        <Text fontSize="lg" fontWeight="semibold" mb={4}>
+          Top Up Balance
+        </Text>
+        <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+          <InputGroup size="md">
+            <Input
+              type="number"
+              placeholder="Enter amount"
+              borderRadius="md"
+            />
+            <InputRightAddon children="USDC" />
+          </InputGroup>
+          <Button
+            colorScheme="green"
+            leftIcon={<Icon as={FaPlus} />}
+          >
+            Top Up
+          </Button>
+        </Stack>
+      </Box>
+
+      {/* Transactions Section */}
+      <Box>
+        <Text fontSize="xl" fontWeight="bold" mb={4}>Recent Transactions</Text>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              <Th>Date</Th>
+              <Th>Campaign</Th>
+              <Th>Amount</Th>
+              <Th>Type</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>Apr 5, 2024</Td>
+              <Td>Casino frame</Td>
+              <Td>-500 USDC</Td>
+              <Td>
+                <Badge colorScheme="red">Spend</Badge>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>Apr 4, 2024</Td>
+              <Td>Top Up via Farcaster</Td>
+              <Td>+1,000 USDC</Td>
+              <Td>
+                <Badge colorScheme="green">Top Up</Badge>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>Apr 3, 2024</Td>
+              <Td>Dating frame</Td>
+              <Td>-300 USDC</Td>
+              <Td>
+                <Badge colorScheme="red">Spend</Badge>
+              </Td>
+            </Tr>
+            <Tr>
+              <Td>Apr 2, 2024</Td>
+              <Td>Education frame</Td>
+              <Td>-200 USDC</Td>
+              <Td>
+                <Badge colorScheme="red">Spend</Badge>
+              </Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </Box>
     </Box>
   );
 };
@@ -310,33 +382,33 @@ export const FinancesWidget = () => {
         <Thead>
           <Tr>
             <Th>Campaign</Th>
-            <Th>Budget</Th>
-            <Th>Spent</Th>
-            <Th>Remaining</Th>
-            <Th>ROI</Th>
+            <Th>Daily Budget</Th>
+            <Th>Finish Date</Th>
+            <Th>Status</Th>
+            <Th>Progress</Th>
           </Tr>
         </Thead>
         <Tbody>
           <Tr>
-            <Td>Summer Sale 2024</Td>
-            <Td>10,000 USDC</Td>
-            <Td>7,500 USDC</Td>
-            <Td>2,500 USDC</Td>
-            <Td>+25%</Td>
+            <Td>Casino frame</Td>
+            <Td>500 USDC</Td>
+            <Td>Apr 30, 2024</Td>
+            <Td><Badge colorScheme="green">Active</Badge></Td>
+            <Td><Progress value={75} size="sm" colorScheme="green" /></Td>
           </Tr>
           <Tr>
-            <Td>New Product Launch</Td>
-            <Td>5,000 USDC</Td>
-            <Td>2,250 USDC</Td>
-            <Td>2,750 USDC</Td>
-            <Td>+15%</Td>
+            <Td>Dating frame</Td>
+            <Td>350 USDC</Td>
+            <Td>May 15, 2024</Td>
+            <Td><Badge colorScheme="red">Waiting for approval</Badge></Td>
+            <Td><Progress value={45} size="sm" colorScheme="red" /></Td>
           </Tr>
           <Tr>
-            <Td>Holiday Special</Td>
-            <Td>8,000 USDC</Td>
-            <Td>7,200 USDC</Td>
-            <Td>800 USDC</Td>
-            <Td>+18%</Td>
+            <Td>Education frame</Td>
+            <Td>280 USDC</Td>
+            <Td>Apr 20, 2024</Td>
+            <Td><Badge colorScheme="green">Active</Badge></Td>
+            <Td><Progress value={90} size="sm" colorScheme="green" /></Td>
           </Tr>
         </Tbody>
       </Table>

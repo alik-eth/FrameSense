@@ -54,16 +54,6 @@ export default function HeaderLinks(props) {
       borderRadius="30px"
       boxShadow={shadow}
     >
-      <SearchBar
-        mb={() => {
-          if (secondary) {
-            return { base: '10px', md: 'unset' };
-          }
-          return 'unset';
-        }}
-        me="10px"
-        borderRadius="30px"
-      />
       <Flex
         bg={ethBg}
         display={secondary ? 'flex' : 'none'}
@@ -91,10 +81,10 @@ export default function HeaderLinks(props) {
           fontWeight="700"
           me="6px"
         >
-          1,924
+          12 345
           <Text as="span" display={{ base: 'none', md: 'unset' }}>
             {' '}
-            ETH
+            USDC
           </Text>
         </Text>
       </Flex>
@@ -243,7 +233,7 @@ export default function HeaderLinks(props) {
           <Avatar
             _hover={{ cursor: 'pointer' }}
             color="white"
-            name="Adela Parkson"
+            name="John Doe"
             bg="#11047A"
             size="sm"
             w="40px"
@@ -270,7 +260,7 @@ export default function HeaderLinks(props) {
               fontWeight="700"
               color={textColor}
             >
-              👋&nbsp; Hey, Adela
+              👋&nbsp; Hey, Jonh
             </Text>
           </Flex>
           <Flex flexDirection="column" p="10px">

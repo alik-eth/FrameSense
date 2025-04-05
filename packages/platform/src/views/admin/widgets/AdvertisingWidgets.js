@@ -24,9 +24,11 @@ import {
   Input,
   InputRightAddon,
   Icon,
+  IconButton,
 } from '@chakra-ui/react';
 import { MdCampaign, MdPeople, MdAttachMoney, MdAccountBalance } from 'react-icons/md';
 import { FaWallet, FaEthereum, FaPlus } from 'react-icons/fa';
+import { EditIcon } from '@chakra-ui/icons';
 
 // Main Dashboard Widgets
 export const MainStatsWidget = () => {
@@ -111,6 +113,7 @@ export const CampaignsWidget = () => {
             <Th>Balance</Th>
             <Th>Status</Th>
             <Th>Progress</Th>
+            <Th>Actions</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -158,6 +161,16 @@ export const CampaignsWidget = () => {
             <Td>5,000 USDC</Td>
             <Td><Badge colorScheme="green">Active</Badge></Td>
             <Td><Progress value={75} size="sm" colorScheme="green" /></Td>
+            <Td>
+              <IconButton
+                icon={<EditIcon />}
+                variant="ghost"
+                colorScheme="blue"
+                aria-label="Edit campaign"
+                size="sm"
+                onClick={() => console.log('Edit Casino frame')}
+              />
+            </Td>
           </Tr>
           <Tr>
             <Td>Dating frame</Td>
@@ -202,6 +215,16 @@ export const CampaignsWidget = () => {
             <Td>3,500 USDC</Td>
             <Td><Badge colorScheme="red">Waiting for approval</Badge></Td>
             <Td><Progress value={45} size="sm" colorScheme="red" /></Td>
+            <Td>
+              <IconButton
+                icon={<EditIcon />}
+                variant="ghost"
+                colorScheme="blue"
+                aria-label="Edit campaign"
+                size="sm"
+                onClick={() => console.log('Edit Dating frame')}
+              />
+            </Td>
           </Tr>
           <Tr>
             <Td>Education frame</Td>
@@ -247,6 +270,16 @@ export const CampaignsWidget = () => {
             <Td>2,800 USDC</Td>
             <Td><Badge colorScheme="green">Active</Badge></Td>
             <Td><Progress value={90} size="sm" colorScheme="green" /></Td>
+            <Td>
+              <IconButton
+                icon={<EditIcon />}
+                variant="ghost"
+                colorScheme="blue"
+                aria-label="Edit campaign"
+                size="sm"
+                onClick={() => console.log('Edit Education frame')}
+              />
+            </Td>
           </Tr>
         </Tbody>
       </Table>
